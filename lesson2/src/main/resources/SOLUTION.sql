@@ -1,55 +1,60 @@
--- Insert new students
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('John', '2010-06-15', 1, 1);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Chris', '2010-08-23', 1, 1);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Carl', '2010-10-10', 1, 1);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Oliver', '2009-05-02', 2, 2);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('James', '2009-09-17', 2, 2);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Lucas', '2009-12-20', 2, 2);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Henry', '2008-08-08', 2, 2);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Jacob', '2007-03-27', 3, 3);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Logan', '2007-11-09', 3, 3);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Emma', '2006-05-12', 4, 4);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Sophia', '2006-11-22', 4, 4);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Noah', '2005-08-30', 5, 5);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('William', '2005-12-03', 5, 5);
-INSERT INTO student (name, birthday, groupnumber, grade) VALUES ('Isabella', '2004-09-15', 5, 5);
+insert into STUDENT(id, name, birthday, groupnumber) values (1, 'John', '2000-01-01', 1);
+insert into STUDENT(id, name, birthday, groupnumber) values (2, 'Chris', '1999-05-12', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (3, 'Carl', '2002-02-28', 4);
+insert into STUDENT(id, name, birthday, groupnumber) values (4, 'Oliver', '2008-01-31', 2);
+insert into STUDENT(id, name, birthday, groupnumber) values (5, 'James', '1999-03-24', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (6, 'Lucas', '2002-02-14', 4);
+insert into STUDENT(id, name, birthday, groupnumber) values (7, 'Henry', '2000-04-09', 1);
+insert into STUDENT(id, name, birthday, groupnumber) values (8, 'Jacob', '1997-05-04', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (9, 'Logan', '2002-11-22', 2);
+insert into STUDENT(id, name, birthday, groupnumber) values (10, 'William', '2000-04-16', 2);
+insert into STUDENT(id, name, birthday, groupnumber) values (11, 'George', '1999-07-16', 5);
+insert into STUDENT(id, name, birthday, groupnumber) values (12, 'Dane', '2002-09-01', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (13, 'Lily', '2000-01-06', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (14, 'Mary', '1999-05-30', 4);
+insert into STUDENT(id, name, birthday, groupnumber) values (15, 'Jason', '2002-06-17', 1);
+insert into STUDENT(id, name, birthday, groupnumber) values (16, 'Jaime', '2002-07-21', 1);
+insert into STUDENT(id, name, birthday, groupnumber) values (17, 'Doc', '1996-11-25', 3);
+insert into STUDENT(id, name, birthday, groupnumber) values (18, 'Jane', '1999-12-11', 2);
+insert into STUDENT(id, name, birthday, groupnumber) values (19, 'Freddy', '2003-08-21', 3);
 
--- Insert new subjects
-INSERT INTO subject (name, description, grade) VALUES ('Art', 'Art and music for 1 grade', 1);
-INSERT INTO subject (name, description, grade) VALUES ('Music', 'Art and music for 1 grade', 1);
-INSERT INTO subject (name, description, grade) VALUES ('Geography', 'Geography and history for 2 grade', 2);
-INSERT INTO subject (name, description, grade) VALUES ('History', 'Geography and history for 2 grade', 2);
-INSERT INTO subject (name, description, grade) VALUES ('PE', 'PE and math for 3 grade', 3);
-INSERT INTO subject (name, description, grade) VALUES ('Math', 'PE and math for 3 grade', 3);
-INSERT INTO subject (name, description, grade) VALUES ('Science', 'Science and IT for 4 grade', 4);
-INSERT INTO subject (name, description, grade) VALUES ('IT', 'Science and IT for 4 grade', 4);
-INSERT INTO subject (name, description, grade) VALUES ('Science2', '2nd subject for 5 grade', 5);
-INSERT INTO subject (name, description, grade) VALUES ('IT2', '2nd subject for 5 grade', 5);
+insert into SUBJECT(id, name, description, grade) values (1, 'Art', 'art', 1);
+insert into SUBJECT(id, name, description, grade) values (2, 'Music', 'music', 1);
+insert into SUBJECT(id, name, description, grade) values (3, 'Geography', 'geography', 2);
+insert into SUBJECT(id, name, description, grade) values (4, 'History', 'history', 2);
+insert into SUBJECT(id, name, description, grade) values (5, 'PE', 'pe', 3);
+insert into SUBJECT(id, name, description, grade) values (6, 'Math', 'math', 3);
+insert into SUBJECT(id, name, description, grade) values (7, 'Science', 'science', 4);
+insert into SUBJECT(id, name, description, grade) values (8, 'IT', 'it', 4);
+insert into SUBJECT(id, name, description, grade) values (9, 'Literature', 'literature', 5);
+insert into SUBJECT(id, name, description, grade) values (10, 'Physics', 'physics', 5);
 
--- Insert new payment types
-INSERT INTO paymenttype (name) VALUES ('DAILY');
-INSERT INTO paymenttype (name) VALUES ('WEEKLY');
-INSERT INTO paymenttype (name) VALUES ('MONTHLY');
-INSERT INTO payment (type_id, amount, payment_date, student_id) VALUES ((SELECT id FROM paymenttype WHERE name = 'WEEKLY'), 50.00, '2023-04-16 09:00:00', (SELECT id FROM student WHERE name = 'John'));
-INSERT INTO payment (type_id, amount, payment_date, student_id) VALUES ((SELECT id FROM paymenttype WHERE name = 'MONTHLY'), 150.00, '2023-04-01 09:00:00', (SELECT id FROM student WHERE name = 'Oliver'));
-INSERT INTO payment (type_id, amount, payment_date, student_id) VALUES ((SELECT id FROM paymenttype WHERE name = 'WEEKLY'), 60.00, '2023-04-16 09:00:00', (SELECT id FROM student WHERE name = 'Henry'));
-INSERT INTO payment (type_id, amount, payment_date, student_id) VALUES ((SELECT id FROM paymenttype WHERE name = 'DAILY'), 10.00, '2023-04-16 09:00:00', (SELECT id FROM student WHERE name = 'James'));
-INSERT INTO payment (type_id, amount, payment_date, student_id) VALUES ((SELECT id from student WHERE name = 'MONTHLY'), 25.00, '2023-04-16 09:00:00', (SELECT id FROM students where name = 'Carl'));
--- Insert new marks
-INSERT INTO mark (student_id, subject_id, mark)
-VALUES
-((SELECT id FROM student WHERE name = 'Chris'), (SELECT id FROM subject WHERE name = 'Art and music'), 8),
-((SELECT id FROM student WHERE name = 'Oliver'), (SELECT id FROM subject WHERE name = 'Geography and history'), 5),
-((SELECT id FROM student WHERE name = 'James'), (SELECT id FROM subject WHERE name = 'Geography and history'), 9),
-((SELECT id FROM student WHERE name = 'Jacob'), (SELECT id FROM subject WHERE name = 'PE and math'), 4),
-((SELECT id FROM student WHERE name = 'Logan'), (SELECT id FROM subject WHERE name = 'PE and math'), 9);
--- insert more
+insert into PAYMENTTYPE(NAME) values ('DAILY');
+insert into PAYMENTTYPE(NAME) values ('WEEKLY');
+insert into PAYMENTTYPE(NAME) values ('MONTHLY');
 
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (1, 2, 101.12, '2022-10-01', 1);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (2, 3, 231.21, '2022-10-05', 4);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (3, 2, 100.00, '2022-10-08', 7);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (4, 1, 31.15, '2022-10-01', 5);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (5, 1, 31.29, '2022-10-01', 2);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (6, 2, 131.2, '2022-10-01', 12);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (7, 2, 123.32, '2022-10-01', 10);
+insert into PAYMENT(ID, TYPE_ID, AMOUNT, PAYMENT_DATE, STUDENT_ID) VALUES (8, 3, 237.11, '2022-10-01', 19);
 
--- insert more marks for students:
-INSERT INTO mark (student_id, subject_id, mark) VALUES
-((SELECT id FROM student WHERE name = 'Carl'), (SELECT id FROM subject WHERE name = 'Art and music'), 7),
-((SELECT id FROM student WHERE name = 'Oliver'), (SELECT id FROM subject WHERE name = 'Science and IT'), 6),
-((SELECT id FROM student WHERE name = 'Lucas'), (SELECT id FROM subject WHERE name = 'Science and IT'), 7),
-((SELECT id FROM student WHERE name = 'Jacob'), (SELECT id FROM subject WHERE name = 'Science and IT'), 8),
-((SELECT id FROM student WHERE name = 'Logan'), (SELECT id FROM subject WHERE name = 'Science and IT'), 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (1, 2, 1, 8);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (2, 4, 4, 5);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (3, 5, 3, 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (4, 8, 6, 4);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (5, 9, 5, 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (6, 1, 2, 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (7, 3, 1, 8);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (8, 6, 3, 7);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (9, 7, 4, 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (10, 10, 7, 7);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (11, 11, 8, 6);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (12, 12, 8, 9);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (13, 13, 9, 10);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (14, 14, 10, 8);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (15, 15, 9, 8);
+insert into MARK(ID, STUDENT_ID, SUBJECT_ID, MARK) values (16, 16, 7, 5);

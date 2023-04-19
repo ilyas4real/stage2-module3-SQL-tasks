@@ -1,5 +1,12 @@
-ALTER TABLE student ADD CONSTRAINT birthday_not_null CHECK (birthday IS NOT NULL);
-ALTER TABLE mark ADD CONSTRAINT mark1-10 CHECK (mark > 0 AND mark < 11), ADD CONSTRAINT mark_student_id_not_null CHECK (student_id IS NOT NULL), ALTER TABLE MARK ADD CONSTRAINT subjectid_not_null CHECK (subject_id IS NOT NULL);
-ALTER TABLE subject ADD CONSTRAINT sub5 CHECK (grade > 0 AND grade < 6);
-ALTER TABLE paymenttype ADD CONSTRAINT paymenttype_name_unique UNIQUE (name);
-ALTER TABLE payment ADD CONSTRAINT type_id_not_null CHECK (type_id IS NOT NULL), ALTER TABLE payment ADD CONSTRAINT amount_not_null CHECK (amount IS NOT NULL), ALTER TABLE PAYMENT ADD CONSTRAINT date_not_null CHECK (payment_date IS NOT NULL);
+alter table STUDENT alter column BIRTHDAY date not null;
+
+alter table MARK add check (MARK >= 1 AND MARK <= 10);
+alter table MARK alter column STUDENT_ID bigint not null;
+alter table MARK alter column SUBJECT_ID bigint not null;
+
+alter table SUBJECT add check (GRADE >= 1 and GRADE <= 5);
+alter table PAYMENTTYPE add unique(NAME);
+
+alter table PAYMENT alter column TYPE_ID bigint not null;
+alter table PAYMENT alter column AMOUNT numeric not null;
+alter table PAYMENT alter column PAYMENT_DATE timestamp not null;
